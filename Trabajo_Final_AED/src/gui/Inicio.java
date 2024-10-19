@@ -108,6 +108,9 @@ public class Inicio extends JFrame {
 		mntmVerReporte.setIcon(new ImageIcon(Inicio.class.getResource("/Imagenes/IconoReporte1.png")));
 		mnReportes.add(mntmVerReporte);
 		
+		JSeparator separator_2 = new JSeparator();
+		mnReportes.add(separator_2);
+		
 		JMenuItem mntmCrearReporte = new JMenuItem("Crear R.");
 		mntmCrearReporte.setIcon(new ImageIcon(Inicio.class.getResource("/Imagenes/IconoReporte2.png")));
 		mnReportes.add(mntmCrearReporte);
