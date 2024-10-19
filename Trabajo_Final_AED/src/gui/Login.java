@@ -51,8 +51,8 @@ public class Login extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 395, 217);
 		contentPane = new JPanel();
-		contentPane.setBackground(SystemColor.window);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		this.setLocationRelativeTo(null);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -103,10 +103,10 @@ public class Login extends JFrame {
 		btnRegistrar.setBounds(139, 142, 94, 23);
 		contentPane.add(btnRegistrar);
 		
-		JButton btnReiniciar = new JButton("Reiniciar");
-		btnReiniciar.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnReiniciar.setBounds(243, 142, 94, 23);
-		contentPane.add(btnReiniciar);
+		JButton btnBorrar = new JButton("Borrar");
+		btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnBorrar.setBounds(243, 142, 94, 23);
+		contentPane.add(btnBorrar);
 		
 		btnConectar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -129,7 +129,7 @@ public class Login extends JFrame {
 			}
 		});
 		
-		btnReiniciar.addActionListener(new ActionListener() {
+		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
