@@ -17,15 +17,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
-import clases.Registrar;
 
-public class Login extends JFrame {
+public class Login extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtUsuario;
 	private JPasswordField txtContra;
-
+	private JButton btnConectar;
+	private JButton btnBorrar;
+	
+	//Atributos
+	public String usuario = "VentasPeru";
+	public String contra = "VentasPeru";
+	
+	Inicio i = new Inicio();
 	/**
 	 * Launch the application.
 	 */
@@ -93,70 +99,84 @@ public class Login extends JFrame {
 		separator_1.setBounds(35, 129, 302, 2);
 		contentPane.add(separator_1);
 		
-		JButton btnConectar = new JButton("Conectar");
+		btnConectar = new JButton("Conectar");
+		btnConectar.addActionListener(this);
 		btnConectar.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnConectar.setBounds(35, 142, 94, 23);
 		contentPane.add(btnConectar);
 		
-		JButton btnRegistrar = new JButton("Registrar");
-		btnRegistrar.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnRegistrar.setBounds(139, 142, 94, 23);
-		contentPane.add(btnRegistrar);
-		
-		JButton btnBorrar = new JButton("Borrar");
+		btnBorrar = new JButton("Borrar");
+		btnBorrar.addActionListener(this);
 		btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnBorrar.setBounds(243, 142, 94, 23);
 		contentPane.add(btnBorrar);
 		
-		btnConectar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(txtUsuario.getText() == "" && txtContra.getText() == null) {
-					try {
-						msgConectar1();
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnBorrar) {
+			do_btnBorrar_actionPerformed(e);
+		}
+		if (e.getSource() == btnConectar) {
+			do_btnConectar_actionPerformed(e);
+		}
+	}
+	
+	//Botones
+	protected void do_btnConectar_actionPerformed(ActionEvent e) {
+		//Objeto obtener String de un JPasswordField
+		String valorPass = String.valueOf(txtContra.getPassword());
+		String user = String.valueOf(txtUsuario.getText());
+		
+		if(user.length() == 0) {
+					msgVacio1();
+					limpiarCampos();
+					txtUsuario.requestFocus();
+			}
+		else if(valorPass.length() == 0){
+					msgVacio2();
+					limpiarCampos();
+					txtUsuario.requestFocus();
+			}
+		else {
+				if(user.equals("VentasPeru") && valorPass.equals("12345")) {
+						msgConectar();
+						i.setExtendedState(MAXIMIZED_BOTH);
+						i.setVisible(true);
+						this.dispose();
 						txtUsuario.requestFocus();
-					}
-					catch (Exception a) {
+				}
+				else{
 						msgError();
+						limpiarCampos();
 						txtUsuario.requestFocus();
-					}
 				}
 			}
-		});
-		
-		btnRegistrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		
-		btnBorrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-
 	}
+	protected void do_btnBorrar_actionPerformed(ActionEvent e) {
+		limpiarCampos();
+		txtUsuario.requestFocus();
+	}
+	//Metodos sin Parámetros
+	public void limpiarCampos() {
+		txtUsuario.setText("");
+		txtContra.setText("");
+	}
+	//Métodos con Parámetros
 	//Mensajes de texto JOptionPane
-	public void msgConectar1() {
+	public void msgConectar() {
 		JOptionPane.showMessageDialog(null, "Los datos ingresados son correctos");
 	}
-	public String msgConectar() {
-		return "Los datos ingresados son correctos.";
+	public void msgVacio1() {
+		JOptionPane.showMessageDialog(null, "No has ingresado datos en el campo 'Usuario'");
 	}
-	public String msgError() {
-		return "Los datos ingresados son incorrectos, vuelva a digitarlos.";
+	public void msgVacio2() {
+		JOptionPane.showMessageDialog(null, "No has ingresado datos en el campo 'Contraseña'");
 	}
-	public String msgVacio() {
-		return "No has ingresado algunos datos, vuelva a digitarlos";
+	public void msgReiniciar() {
+		JOptionPane.showMessageDialog(null, "Se han vaciado los campos de texto.");
 	}
-	public String msgRegistrar() {
-		return "El registro se llevó acabo de forma exitosa.";
-	}
-	public String msgReiniciar() {
-		return "Se los campos de texto exitosamente.";
-	}
-	//Cualquier resultado que no deje conectarse
-	public void accionesError() {
-		
+	public void msgError() {
+		JOptionPane.showMessageDialog(null, "Los datos ingresados son incorrectos, vuelva a digitarlos.");
 	}
 }

@@ -16,8 +16,16 @@ public class Venta {
 	private double pre; //Precio
 	private String fecha; //Fecha en formato mm/dd/aaaa
 	
+	//Atributos Privados para Reportes
+	private String nomClt; //Nombre Cliente
+	private String apeClt; //Apellido Cliente
+	private String nomProd; //Nombre Producto
+	private double subTot; //Importe Sub Total
+	private double igv; //Importe de IGV
+	private double tot; //Importe Total a Pagar
+	
 	//Constructor
-	public Venta(int codClt, int codProd, int cant, double pre) {
+	public Venta(int codClt, int codProd, int cant, double pre, String nomClt, String apeClt, String nomProd, double subTot, double igv, double tot) {
 		//Autogenerado y Correlativo a partir de 3001
 		this.codVenta = contCodVenta;
 		this.codClt = codClt;
@@ -25,6 +33,13 @@ public class Venta {
 		this.cant = cant;
 		this.pre = pre;
 		this.fecha = generarFechaActual();
+		
+		this.nomClt = nomClt;
+		this.apeClt = apeClt;
+		this.nomProd = nomProd;
+		this.subTot = subTot;
+		this.igv = igv;
+		this.tot = tot;
 		//Aumento Contador Código Venta
 		contCodVenta ++;
 	}
@@ -71,5 +86,54 @@ public class Venta {
 	}
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
+	}
+	
+	//Métodos Get y Set de Reporte
+	public String getNomClt() {
+		return nomClt;
+	}
+
+	public void setNomClt(String nomClt) {
+		this.nomClt = nomClt;
+	}
+
+	public String getApeClt() {
+		return apeClt;
+	}
+
+	public void setApeClt(String apeClt) {
+		this.apeClt = apeClt;
+	}
+
+	public String getNomProd() {
+		return nomProd;
+	}
+
+	public void setNomProd(String nomProd) {
+		this.nomProd = nomProd;
+	}
+
+	public double getSubTot() {
+		return subTot;
+	}
+
+	public void setSubTot(double subTot) {
+		this.subTot = subTot;
+	}
+
+	public double getIgv() {
+		return igv;
+	}
+
+	public void setIgv(double igv) {
+		this.igv = igv;
+	}
+
+	public double getTot() {
+		return tot;
+	}
+
+	public void setTot(double tot) {
+		this.tot = tot;
 	}
 }

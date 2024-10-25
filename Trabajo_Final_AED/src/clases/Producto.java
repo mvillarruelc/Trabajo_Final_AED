@@ -14,13 +14,13 @@ public class Producto {
 	private int StkMax; //Stock Máximo
 	
 	//Constructor
-	public Producto(int codProd, String nom, double pre, int stkActual, int stkMin, int stkMax) {
+	public Producto(String nom, double pre, int stkActual, int stkMin, int stkMax) {
 		this.codProd = contCodProd;
 		this.nom = nom;
 		this.pre = pre;
-		StkActual = stkActual;
-		StkMin = stkMin;
-		StkMax = stkMax;
+		this.StkActual = stkActual;
+		this.StkMin = stkMin;
+		this.StkMax = stkMax;
 		//Autogenerado y Correlativo a partir de 2001
 		contCodProd ++;
 	}

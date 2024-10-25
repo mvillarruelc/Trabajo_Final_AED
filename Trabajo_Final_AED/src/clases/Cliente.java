@@ -14,14 +14,13 @@ public class Cliente {
 	private String dni; //DNI
 	
 	//Constructor
-	public Cliente(int codClt, String nom, String ape, String direc, String tlf, String dni) {
+	public Cliente(String nom, String ape, String direc, String tlf, String dni) {
 		this.codClt = contCodClt;
 		this.nom = nom;
 		this.ape = ape;
 		this.direc = direc;
 		this.tlf = tlf;
 		this.dni = dni;
-		//Autogenerado y Correlativo a partir de 1001
 		contCodClt ++;
 	}
 	
@@ -62,4 +61,7 @@ public class Cliente {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+	
+	//Métodos de Cliente
+	
 }
